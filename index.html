@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusLink - Tableau de bord</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="#" onclick="window.location.reload(); return false;" class="logo" style="text-decoration: none; cursor: pointer;">
+            <h1>Campus<span>Link</span></h1>
+        </a>
+        
+        <nav class="main-nav" aria-label="Navigation principale">
+            <a href="#tableau-de-bord" class="active">Tableau de bord</a>
+            <a href="#salles">État des salles</a>
+            <a href="#equipements">Équipement</a>
+            <a href="#incidents" class="btn-incident">Signaler un incident</a>
+        </nav>
+    </header>
+
+
+    <main>
+        <!-- Section Vue d'ensemble / Statistiques -->
+        <div class="entaite" id="tableau-de-bord">
+            <h1>Vue d'ensemble du Campus</h1>
+            <p>Bienvenue sur le système d'information de gestion du campus Ynov. Suivez l'état des ressources en temps réel.</p>
+        </div>
+
+
+        <div class="stats-container">
+            <!-- Carte 1 : Salles disponibles -->
+            <div class="stat-card">
+                <div class="stat-info">
+                    <span class="stat-title">SALLES DISPONIBLES</span>
+                    <span class="stat-value">1 <small>/ 3</small></span>
+                </div>
+            </div>
+
+            <!-- Carte 2 : Équipements actifs -->
+            <div class="stat-card">
+                <div class="stat-info">
+                    <span class="stat-title">ÉQUIPEMENTS ACTIFS</span>
+                    <span class="stat-value">3</span>
+                </div>
+            </div>
+
+            <!-- Carte 3 : Incidents en cours -->
+            <div class="stat-card">
+                <div class="stat-info">
+                    <span class="stat-title">INCIDENTS EN COURS</span>
+                    <span class="stat-value text-red">3</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section État des salles -->
+        <section class="rooms-section" id="salles">
+            <div class="table-card-wrapper">
+                <div class="table-header-container">
+                    <h2>État récent des salles</h2>
+                    
+                    <!-- Filtres Salles -->
+                    <div class="filter-buttons" data-target="rooms-table">
+                        <button class="filter-btn active" data-filter="all">Toutes</button>
+                        <button class="filter-btn" data-filter="disponible">Disponible</button>
+                        <button class="filter-btn" data-filter="occupee">Occupée</button>
+                        <button class="filter-btn" data-filter="maintenance">Maintenance</button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="custom-table" id="rooms-table">
+                        <thead>
+                            <tr>
+                                <th>NOM DE LA SALLE</th>
+                                <th>CAPACITÉ</th>
+                                <th>TYPE</th>
+                                <th>STATUT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-status="disponible">
+                                <td class="room-name">Salle 101</td>
+                                <td>30 places</td>
+                                <td>Cours Magistral</td>
+                                <td><span class="badge disponible">Disponible</span></td>
+                            </tr>
+                            <tr data-status="occupee">
+                                <td class="room-name">Labo Cyber 01</td>
+                                <td>25 places</td>
+                                <td>Informatique</td>
+                                <td><span class="badge occupee">Occupée</span></td>
+                            </tr>
+                            <tr data-status="maintenance">
+                                <td class="room-name">Salle Réunion B</td>
+                                <td>12 places</td>
+                                <td>Réunion</td>
+                                <td><span class="badge maintenance">Maintenance</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Équipements -->
+        <section class="equipment-section" id="equipements">
+            <div class="table-card-wrapper">
+                <div class="table-header-container">
+                    <h2>Nos Équipements</h2>
+                    
+                    <!-- Filtres Équipements -->
+                    <div class="filter-buttons" data-target="equipment-table">
+                        <button class="filter-btn active" data-filter="all">Tous</button>
+                        <button class="filter-btn" data-filter="operationnel">Opérationnel</button>
+                        <button class="filter-btn" data-filter="reparation">En réparation</button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="custom-table" id="equipment-table">
+                        <thead>
+                            <tr>
+                                <th>ID / CODE</th>
+                                <th>TYPE D'ÉQUIPEMENT</th>
+                                <th>EMPLACEMENT</th>
+                                <th>ÉTAT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-status="operationnel">
+                                <td class="equipment-name">PC-LAB-01</td>
+                                <td>PC Fixe (Cyber)</td>
+                                <td>Labo Cyber 01</td>
+                                <td><span class="badge operationnel">Opérationnel</span></td>
+                            </tr>
+                            <tr data-status="reparation">
+                                <td class="equipment-name">VP-101-A</td>
+                                <td>Vidéoprojecteur</td>
+                                <td>Salle 101</td>
+                                <td><span class="badge reparation">En réparation</span></td>
+                            </tr>
+                            <tr data-status="operationnel">
+                                <td class="equipment-name">SW-RACK-02</td>
+                                <td>Switch Réseau</td>
+                                <td>Baie Technique 2</td>
+                                <td><span class="badge operationnel">Opérationnel</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Signalement d'incident -->
+        <section class="incident-section" id="incidents">
+            <div class="table-card-wrapper">
+                <div class="table-header-container">
+                    <h2>Signaler un incident</h2>
+                </div>
+
+                <form class="incident-form">
+                    <div class="form-group">
+                        <label for="equipment-id">ID / Équipement ou Salle concernée</label>
+                        <input type="text" id="equipment-id" placeholder="Ex: PC-LAB-01 ou Salle 101" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="incident-type">Type de problème</label>
+                        <select id="incident-type" required>
+                            <option value="" disabled selected>Sélectionnez un type de problème</option>
+                            <option value="hardware">Matériel cassé / Défectueux</option>
+                            <option value="network">Problème réseau / Connexion</option>
+                            <option value="software">Problème logiciel</option>
+                            <option value="other">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="incident-desc">Description détaillée</label>
+                        <textarea id="incident-desc" rows="4" placeholder="Décrivez brièvement le dysfonctionnement..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Envoyer le signalement</button>
+                </form>
+            </div>
+        </section>
+
+        <div class="contenu">
+            <p>Système de gestion des équipements et incidents du campus</p>
+            <h2>Tableau de bord</h2>
+            <p>Bienvenue sur la maquette statique de votre projet fil rouge.</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>Campuslink - Ynov - 2026</p>
+    </footer>
+
+    <!-- Script JavaScript pour les filtres -->
+    <script>
+        document.querySelectorAll('.filter-buttons').forEach(container => {
+            const targetTableId = container.getAttribute('data-target');
+            const table = document.getElementById(targetTableId);
+            const buttons = container.querySelectorAll('.filter-btn');
+            const rows = table.querySelectorAll('tbody tr');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const filter = button.getAttribute('data-filter');
+
+                    rows.forEach(row => {
+                        const status = row.getAttribute('data-status');
+                        if (filter === 'all' || status === filter) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
