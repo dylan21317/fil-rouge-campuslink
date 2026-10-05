@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusLink - Équipements</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html" class="logo" style="text-decoration: none; cursor: pointer;">
+            <h1>Campus<span>Link</span></h1>
+        </a>
+        
+        <nav class="main-nav">
+            <a href="index.html">Tableau de bord</a>
+            <a href="salles.html">État des salles</a>
+            <a href="equipements.html" class="active">Équipement</a>
+            <a href="incidents.html" class="btn-incident">Signaler un incident</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="equipment-section" style="margin-top: 2rem;">
+            <div class="table-card-wrapper">
+                <div class="table-header-container">
+                    <h2>Nos Équipements</h2>
+                    
+                    <div class="filter-buttons" data-target="equipment-table">
+                        <button class="filter-btn active" data-filter="all">Tous</button>
+                        <button class="filter-btn" data-filter="operationnel">Opérationnel</button>
+                        <button class="filter-btn" data-filter="reparation">En réparation</button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="custom-table" id="equipment-table">
+                        <thead>
+                            <tr>
+                                <th>ID / CODE</th>
+                                <th>TYPE D'ÉQUIPEMENT</th>
+                                <th>EMPLACEMENT</th>
+                                <th>ÉTAT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-status="operationnel">
+                                <td class="equipment-name">PC-LAB-01</td>
+                                <td>PC Fixe (Cyber)</td>
+                                <td>Labo Cyber 01</td>
+                                <td><span class="badge operationnel">Opérationnel</span></td>
+                            </tr>
+                            <tr data-status="reparation">
+                                <td class="equipment-name">VP-101-A</td>
+                                <td>Vidéoprojecteur</td>
+                                <td>Salle 101</td>
+                                <td><span class="badge reparation">En réparation</span></td>
+                            </tr>
+                            <tr data-status="operationnel">
+                                <td class="equipment-name">SW-RACK-02</td>
+                                <td>Switch Réseau</td>
+                                <td>Baie Technique 2</td>
+                                <td><span class="badge operationnel">Opérationnel</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Campuslink - Ynov - 2026</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.filter-buttons').forEach(container => {
+            const targetTableId = container.getAttribute('data-target');
+            const table = document.getElementById(targetTableId);
+            const buttons = container.querySelectorAll('.filter-btn');
+            const rows = table.querySelectorAll('tbody tr');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const filter = button.getAttribute('data-filter');
+                    rows.forEach(row => {
+                        const status = row.getAttribute('data-status');
+                        row.style.display = (filter === 'all' || status === filter) ? '' : 'none';
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

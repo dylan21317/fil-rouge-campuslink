@@ -1,0 +1,63 @@
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CampusLink - Signaler un incident</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+
+        <header class="header">
+            <a href="index.html" class="logo" style="text-decoration: none; cursor: pointer;">
+                <h1>Campus<span>Link</span></h1>
+            </a>
+            
+            <nav class="main-nav">
+                <a href="index.html">Tableau de bord</a>
+                <a href="salles.html">État des salles</a>
+                <a href="equipements.html">Équipement</a>
+                <a href="incidents.html" class="btn-incident active">Signaler un incident</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="incident-section" style="margin-top: 2rem;">
+                <div class="table-card-wrapper">
+                    <div class="table-header-container">
+                        <h2>Signaler un incident</h2>
+                    </div>
+
+                    <form class="incident-form">
+                        <div class="form-group">
+                            <label for="equipment-id">ID / Équipement ou Salle concernée</label>
+                            <input type="text" id="equipment-id" placeholder="Ex: PC-LAB-01 ou Salle 101" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="incident-type">Type de problème</label>
+                            <select id="incident-type" required>
+                                <option value="" disabled selected>Sélectionnez un type de problème</option>
+                                <option value="hardware">Matériel cassé / Défectueux</option>
+                                <option value="network">Problème réseau / Connexion</option>
+                                <option value="software">Problème logiciel</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="incident-desc">Description détaillée</label>
+                            <textarea id="incident-desc" rows="4" placeholder="Décrivez brièvement le dysfonctionnement..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Envoyer le signalement</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>Campuslink - Ynov - 2026</p>
+        </footer>
+    </body>
+    </html>
