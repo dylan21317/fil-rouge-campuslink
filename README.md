@@ -4,6 +4,8 @@
 
 ---
 
+POUR LANCER LE SITE INTERNET IL FAUT LOUVRIR VIA INDEX.
+
 ## Sommaire
 
 1. [A propos du projet](#a-propos-du-projet)
